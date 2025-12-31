@@ -7,3 +7,4 @@ Sito statico creato per GitHub Pages.
 - `css/`: Fogli di stile.
 - `js/`: Script JavaScript.
 - `images/`: Asset grafici.
+ 
