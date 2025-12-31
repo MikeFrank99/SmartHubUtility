@@ -22,7 +22,7 @@ The project is a **Single Page Application (SPA)** built with HTML5, CSS3, and V
 *   **`css/style.css`**: Global styles, including responsive media queries and animations.
 *   **`js/script.js`**: UI logic, Web3Forms integration, floating CTA behavior, and cookie management.
 *   **`images/`**: Locally stored assets (logo, service card images).
-*   **`CNAME`**: Custom domain configuration (`shu.michaelfrancazzi.com`).
+*   **`CNAME`**: Custom domain configuration (`smarthubutility.it`).
 
 ## Technical Details
 
@@ -36,7 +36,7 @@ Forms use **Web3Forms API**. The Career form has been simplified to remove file 
 ## Deployment
 
 *   **Hosting:** GitHub Pages.
-*   **Domain:** `https://shu.michaelfrancazzi.com`.
+*   **Domain:** `https://smarthubutility.it`.
 *   **Deployment:** Automatic via GitHub Actions on push to `main`.
 
 ## Development Conventions
