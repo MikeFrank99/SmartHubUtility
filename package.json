@@ -1,0 +1,31 @@
+{
+  "name": "smarthubutility-site",
+  "version": "1.0.0",
+  "description": "Sito web corporate per SmartHubUtility",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -o -c-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "utility",
+    "consulting",
+    "energy",
+    "html",
+    "css"
+  ],
+  "author": "SmartHubUtility",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeFrank99/SmartHubUtility.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MikeFrank99/SmartHubUtility/issues"
+  },
+  "homepage": "https://MikeFrank99.github.io/SmartHubUtility",
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
