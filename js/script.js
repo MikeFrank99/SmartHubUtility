@@ -41,6 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Floating CTA Visibility ---
+    const floatingCta = document.getElementById('floatingCta');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            floatingCta.classList.add('visible');
+        } else {
+            floatingCta.classList.remove('visible');
+        }
+    });
+
     // --- Scroll Animations (Intersection Observer) ---
     const revealElements = document.querySelectorAll('.reveal');
 
