@@ -17,6 +17,30 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', updateLogo);
     }
 
+    // --- Cookie Banner Logic ---
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptCookies = document.getElementById('acceptCookies');
+    const declineCookies = document.getElementById('declineCookies');
+
+    if (cookieBanner) {
+        // Show banner if choice not saved
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('active');
+            }, 2000);
+        }
+
+        acceptCookies.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieBanner.classList.remove('active');
+        });
+
+        declineCookies.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieBanner.classList.remove('active');
+        });
+    }
+
     // --- Scroll Animations (Intersection Observer) ---
     const revealElements = document.querySelectorAll('.reveal');
 
@@ -124,24 +148,45 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (isValid) {
-                // Simulation of API Call
+                // Real Web3Forms API Call
                 const submitBtn = contactForm.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerText;
+                const formData = new FormData(contactForm);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
                 
                 submitBtn.disabled = true;
                 submitBtn.innerText = 'Invio in corso...';
 
-                setTimeout(() => {
-                    document.getElementById('formSuccess').style.display = 'block';
-                    contactForm.reset();
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        document.getElementById('formSuccess').style.display = 'block';
+                        contactForm.reset();
+                    } else {
+                        console.log(response);
+                        alert("Si è verificato un errore. Riprova più tardi.");
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("Errore di connessione. Controlla la tua rete.");
+                })
+                .then(() => {
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalText;
-                    
-                    // Hide success message after 5 seconds
                     setTimeout(() => {
                         document.getElementById('formSuccess').style.display = 'none';
                     }, 5000);
-                }, 1500);
+                });
             }
         });
     }
@@ -180,17 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const phone = document.getElementById('c_phone');
             if (phone.value.trim().length < 8) {
                 document.getElementById('c_phoneError').style.display = 'block';
-                phone.style.borderColor = 'var(--error)';
+                name.style.borderColor = 'var(--error)';
                 isValid = false;
             }
             
-            // CV File
-            const cv = document.getElementById('c_cv');
-            if (cv.files.length === 0) {
-                 document.getElementById('c_cvError').style.display = 'block';
-                 isValid = false;
-            }
-
             // Privacy
             const privacy = document.getElementById('c_privacy');
             if (!privacy.checked) {
@@ -201,20 +239,34 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isValid) {
                 const submitBtn = careerForm.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerText;
+                const formData = new FormData(careerForm);
                 
                 submitBtn.disabled = true;
                 submitBtn.innerText = 'Invio...';
 
-                setTimeout(() => {
-                    document.getElementById('careerSuccess').style.display = 'block';
-                    careerForm.reset();
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(async (response) => {
+                    if (response.status == 200) {
+                        document.getElementById('careerSuccess').style.display = 'block';
+                        careerForm.reset();
+                    } else {
+                        const res = await response.json();
+                        alert("Errore: " + (res.message || "Non è stato possibile inviare la candidatura."));
+                    }
+                })
+                .catch(error => {
+                    alert("Errore di rete durante l'invio del file.");
+                })
+                .finally(() => {
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalText;
-                    
                     setTimeout(() => {
                         document.getElementById('careerSuccess').style.display = 'none';
                     }, 5000);
-                }, 1500);
+                });
             }
         });
     }

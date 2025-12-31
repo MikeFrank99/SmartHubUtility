@@ -69,8 +69,8 @@
                             <img src="https://ui-avatars.com/api/?name=Michael+Francazzi&background=0f172a&color=fff&size=150" alt="Michael Francazzi">
                         </div>
                         <h3>Michael Francazzi</h3>
-                        <span class="team-role">Co-Founder & Consulente Senior</span>
-                        <p>Esperto in analisi dei mercati energetici. Trova le soluzioni più vantaggiose per garantire risparmio concreto.</p>
+                        <span class="team-role">Consulente & Sales Manager</span>
+                        <p>Specialista nell'analisi dei mercati energetici e TLC. Supporta privati e aziende nell'ottimizzazione costante delle utenze.</p>
                         <div class="social-links-card">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                         </div>
@@ -82,8 +82,8 @@
                             <img src="https://ui-avatars.com/api/?name=Samuele+Ghini&background=0f172a&color=fff&size=150" alt="Samuele Ghini">
                         </div>
                         <h3>Samuele Ghini</h3>
-                        <span class="team-role">Co-Founder & Responsabile Tecnico</span>
-                        <p>Specialista in telecomunicazioni e fotovoltaico. Gestisce l'implementazione tecnica e le infrastrutture.</p>
+                        <span class="team-role">Consulente & Sales Manager</span>
+                        <p>Esperto in soluzioni di connettività e sistemi fotovoltaici. Gestisce la consulenza tecnica e commerciale per il collettivo.</p>
                         <div class="social-links-card">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                         </div>
@@ -95,8 +95,8 @@
                             <img src="https://ui-avatars.com/api/?name=Ruben+Sciola&background=0f172a&color=fff&size=150" alt="Ruben Sciola">
                         </div>
                         <h3>Ruben Sciola</h3>
-                        <span class="team-role">Co-Founder & Sales Manager</span>
-                        <p>Il punto di riferimento per i clienti. Assicura che ogni esigenza venga ascoltata con massima trasparenza.</p>
+                        <span class="team-role">Consulente & Sales Manager</span>
+                        <p>Il punto di riferimento per la gestione clienti. Assicura trasparenza e risparmio attraverso un monitoraggio costante delle offerte.</p>
                         <div class="social-links-card">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                         </div>
@@ -116,7 +116,7 @@
                 <div class="grid">
                     <!-- Luce e Gas -->
                     <div class="card reveal">
-                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=600&q=80" alt="Luce e Gas" class="card-image">
+                        <img src="./images/luce-gas.jpg" alt="Energia e Gas" class="card-image">
                         <div class="card-content">
                             <div>
                                 <i class="fas fa-plug"></i>
@@ -129,7 +129,7 @@
 
                     <!-- Internet -->
                     <div class="card reveal" style="transition-delay: 100ms;">
-                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Internet & Fibra" class="card-image">
+                        <img src="./images/internet.jpg" alt="Fibra Ottica" class="card-image">
                         <div class="card-content">
                             <div>
                                 <i class="fas fa-wifi"></i>
@@ -142,7 +142,7 @@
 
                     <!-- Telefonia -->
                     <div class="card reveal" style="transition-delay: 200ms;">
-                        <img src="https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?auto=format&fit=crop&w=600&q=80" alt="Telefonia" class="card-image">
+                        <img src="./images/telefonia.jpg" alt="Telefonia Mobile 5G" class="card-image">
                         <div class="card-content">
                             <div>
                                 <i class="fas fa-mobile-alt"></i>
@@ -155,7 +155,7 @@
 
                     <!-- Sky -->
                     <div class="card reveal">
-                        <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=600&q=80" alt="Sky TV" class="card-image">
+                        <img src="./images/sky.jpg" alt="Intrattenimento Sky" class="card-image">
                         <div class="card-content">
                             <div>
                                 <i class="fas fa-tv"></i>
@@ -168,7 +168,7 @@
 
                     <!-- Fotovoltaico -->
                     <div class="card reveal" style="transition-delay: 100ms;">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80" alt="Fotovoltaico" class="card-image">
+                        <img src="./images/fotovoltaico.jpg" alt="Pannelli Fotovoltaici" class="card-image">
                         <div class="card-content">
                             <div>
                                 <i class="fas fa-solar-panel"></i>
@@ -192,6 +192,11 @@
                 
                 <div class="contact-form reveal">
                     <form id="contactForm" novalidate>
+                        <!-- Web3Forms Config -->
+                        <input type="hidden" name="access_key" value="76649ffd-6835-4546-ade6-ad15e287437f">
+                        <input type="hidden" name="subject" value="Nuova Richiesta di Consulenza - SmartHubUtility">
+                        <input type="hidden" name="from_name" value="SmartHubUtility Website">
+                        
                         <div class="form-group">
                             <label for="name">Nome e Cognome *</label>
                             <input type="text" id="name" name="name" required placeholder="Mario Rossi">
@@ -231,7 +236,7 @@
                         <div class="form-group">
                              <label style="font-weight: normal; font-size: 0.9rem;">
                                 <input type="checkbox" id="privacy" required>
-                                Accetto il trattamento dei dati personali (GDPR) *
+                                Accetto il trattamento dei dati personali (<a href="privacy-policy.html" target="_blank">Privacy Policy</a>) *
                             </label>
                             <span class="error-message" id="privacyError">Devi accettare la privacy policy.</span>
                         </div>
@@ -291,6 +296,10 @@
                     <div class="contact-form reveal" style="border-top-color: var(--success); transition-delay: 100ms;">
                         <h3 style="text-align: center; margin-bottom: 1.5rem;">Candidati Ora</h3>
                         <form id="careerForm" novalidate>
+                            <!-- Web3Forms Config -->
+                            <input type="hidden" name="access_key" value="76649ffd-6835-4546-ade6-ad15e287437f">
+                            <input type="hidden" name="subject" value="Nuova Candidatura Agente - SmartHubUtility">
+                            
                             <div class="form-group">
                                 <label for="c_name">Nome e Cognome *</label>
                                 <input type="text" id="c_name" name="name" required placeholder="Mario Rossi">
@@ -309,17 +318,14 @@
                                 <span class="error-message" id="c_phoneError">Telefono non valido.</span>
                             </div>
 
-                            <div class="form-group">
-                                <label for="c_cv">Carica il tuo CV (PDF) *</label>
-                                <input type="file" id="c_cv" name="cv" accept=".pdf,.doc,.docx" required style="padding: 0.5rem; background: transparent; border: none;">
-                                <small style="display: block; color: #999; margin-top: 5px;">Max 5MB.</small>
-                                <span class="error-message" id="c_cvError">Carica un file valido.</span>
-                            </div>
+                            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1.5rem;">
+                                <i class="fas fa-info-circle"></i> Una volta inviata la candidatura, ti contatteremo per richiedere il tuo CV, oppure puoi anticiparlo a: <strong>michael.francazzi@gmail.com</strong>
+                            </p>
 
                             <div class="form-group">
                                 <label style="font-weight: normal; font-size: 0.9rem;">
                                     <input type="checkbox" id="c_privacy" required>
-                                    Accetto il trattamento dei dati personali ai fini di recruiting *
+                                    Accetto il trattamento dei dati personali ai fini di recruiting (<a href="privacy-policy.html" target="_blank">Privacy Policy</a>) *
                                 </label>
                                 <span class="error-message" id="c_privacyError">Accetta la privacy.</span>
                             </div>
@@ -340,7 +346,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>SmartHubUtility</h3>
-                <p>La tua guida nel mondo delle utenze.</p>
+                <p>Consulenza professionale e gratuita per le tue utenze.</p>
                 <div class="social-links" style="margin-top: 1rem;">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -349,15 +355,31 @@
             </div>
             <div class="footer-section">
                 <h3>Contatti Rapidi</h3>
-                <p><i class="fas fa-envelope"></i> info@smarthubutility.it</p>
+                <p><i class="fas fa-envelope"></i> michael.francazzi@gmail.com</p>
                 <p><i class="fas fa-phone"></i> +39 012 345 6789</p>
                 <p><i class="fas fa-map-marker-alt"></i> Italia</p>
             </div>
         </div>
         <div class="copyright">
             <p>&copy; 2025 SmartHubUtility. Tutti i diritti riservati.</p>
+            <div class="footer-links-legal">
+                <a href="note-legali.html">Note Legali</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="cookie-policy.html">Cookie Policy</a>
+            </div>
         </div>
     </footer>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Utilizziamo i cookie per migliorare la tua esperienza. Continuando la navigazione o cliccando "Accetta", acconsenti all'uso dei cookie. <a href="cookie-policy.html">Maggiori informazioni</a></p>
+        </div>
+        <div class="cookie-buttons">
+            <button id="declineCookies" class="btn btn-outline cookie-btn" style="color: var(--text-color); border-color: #ddd;">Rifiuta</button>
+            <button id="acceptCookies" class="btn btn-primary cookie-btn">Accetta</button>
+        </div>
+    </div>
 
     <script src="./js/script.js"></script>
 </body>

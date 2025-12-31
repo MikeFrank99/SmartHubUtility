@@ -1,54 +1,44 @@
 # Project Context: SmartHubUtility
 
 ## Project Overview
-**SmartHubUtility** is a static corporate website designed for an utility consulting firm specializing in energy (light, gas), connectivity (internet, telephony), Sky TV, and photovoltaic systems.
+**SmartHubUtility** is a static corporate website for a **professional collective** specializing in utility consulting. The collective offers free, ongoing advice for energy (Luce e Gas), connectivity (internet, telephony), Sky TV, and photovoltaic systems, focusing on continuous market optimization by switching providers to ensure the best rates for clients.
 
-The project is built as a **Single Page Application (SPA)** using native technologies (HTML5, CSS3, JavaScript) to ensure high performance and broad compatibility. It is optimized for hosting on **GitHub Pages**.
+The project is a **Single Page Application (SPA)** built with HTML5, CSS3, and Vanilla JavaScript, optimized for **GitHub Pages**.
 
 ### Key Features
-*   **One-Page Layout:** Smooth scrolling navigation between sections (Home, About Us, Services, Careers, Contact).
-*   **Responsive Design:** Fully adaptable layout for mobile, tablet, and desktop.
-*   **Modern UI:** "Corporate Tech" aesthetic with Deep Navy/Electric Blue color palette, gradients, and scroll animations (`IntersectionObserver`).
-*   **Interactive Forms:** Contact and Recruiting forms with client-side validation.
+*   **Professional Collective:** Managed by Michael Francazzi, Samuele Ghini, and Ruben Sciola, all serving as "Consulente & Sales Manager".
+*   **Dynamic Branding:** Responsive text-based logo ("SmartHubUtility" on desktop, "Shu." on mobile).
+*   **Modern UI:** "Corporate Tech" aesthetic with the **Ubuntu** font, Navy/Electric Blue palette, and custom SVG wave dividers.
+*   **Legal Compliance:** Includes dedicated pages for Privacy Policy, Cookie Policy, and Note Legali (Legal Notes), along with a functional cookie consent banner.
+*   **Functional Forms:** Contact and Career forms integrated with **Web3Forms** for real email delivery.
+*   **Localized Assets:** High-resolution, commercially licensed images stored locally in the `images/` directory.
 
 ## Architecture & File Structure
 
-The project follows a standard static site structure:
+*   **`index.html`**: Main entry point.
+*   **`404.html`**: Custom 404 error page.
+*   **`privacy-policy.html`**, **`cookie-policy.html`**, **`note-legali.html`**: Legal compliance pages.
+*   **`css/style.css`**: Global styles, including responsive media queries and animations.
+*   **`js/script.js`**: UI logic, Web3Forms integration, and cookie management.
+*   **`images/`**: Locally stored assets (logo, service card images).
+*   **`CNAME`**: Custom domain configuration (`shu.michaelfrancazzi.com`).
 
-*   **`index.html`**: The main entry point containing all content sections.
-*   **`404.html`**: Custom error page styled to match the main site.
-*   **`css/style.css`**: Contains all styling, CSS variables, and animation definitions.
-*   **`js/script.js`**: Handles UI logic (mobile menu, scroll spy, form validation).
-*   **`images/`**: Stores assets like the logo.
-*   **`CNAME`**: Configures the custom domain `shu.michaelfrancazzi.com`.
-*   **.nojekyll**: A marker file to instruct GitHub Pages to bypass Jekyll processing.
+## Technical Details
 
-## Building and Running
+### Form Integration
+Forms use **Web3Forms API**. The Career form has been simplified to remove file uploads to comply with the service's free tier, encouraging users to send CVs via email to `michael.francazzi@gmail.com`.
 
-### Prerequisites
-*   Node.js and npm (optional, for running the local server).
+### Legal & Privacy
+*   **GDPR Compliant:** Privacy checkbox on all forms.
+*   **Cookie Management:** Consent banner using `localStorage` to persist user choice.
 
-### Commands
-*   **Start Local Server:**
-    ```bash
-    npm start
-    ```
-    This command runs `npx http-server . -o -c-1` to serve the site locally and open it in the default browser.
+## Deployment
 
-## Deployment & Repository Details
-
-*   **Repository:** `https://github.com/MikeFrank99/SmartHubUtility`
-*   **Custom Domain:** `https://shu.michaelfrancazzi.com`
-*   **GitHub Pages URL:** `https://mikefrank99.github.io/SmartHubUtility/`
-
-### Deployment Conventions
-1.  **CNAME File:** Do not delete the `CNAME` file, as it maintains the link to the custom domain.
-2.  **Relative Paths:** Always use `./` in HTML/CSS for resource linking to ensure they resolve correctly under both the custom domain and the GitHub subdirectory.
-3.  **Pushing Changes:** Use `git push origin main`. GitHub Actions will automatically handle the build and deployment.
+*   **Hosting:** GitHub Pages.
+*   **Domain:** `https://shu.michaelfrancazzi.com`.
+*   **Deployment:** Automatic via GitHub Actions on push to `main`.
 
 ## Development Conventions
-
-### Coding Style
-*   **CSS:** Uses CSS Variables (`:root`) for colors and easy theming.
-*   **JavaScript:** Vanilla JS. Uses `IntersectionObserver` for scroll animations.
-*   **Paths:** Always use **relative paths** for maximum compatibility.
+*   **CSS:** Variable-based theming (`:root`).
+*   **JS:** Vanilla JavaScript (no frameworks).
+*   **Paths:** Always use **relative paths** (`./`).
