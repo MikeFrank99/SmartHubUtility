@@ -20,11 +20,10 @@ The project follows a standard static site structure:
 *   **`css/style.css`**: Contains all styling, CSS variables, and animation definitions.
 *   **`js/script.js`**: Handles UI logic (mobile menu, scroll spy, form validation).
 *   **`images/`**: Stores assets like the logo.
-*   **`.nojekyll`**: A marker file to instruct GitHub Pages to bypass Jekyll processing (crucial for loading resources correctly).
+*   **`CNAME`**: Configures the custom domain `shu.michaelfrancazzi.com`.
+*   **.nojekyll**: A marker file to instruct GitHub Pages to bypass Jekyll processing.
 
 ## Building and Running
-
-Since this is a static site, no compilation step is strictly necessary. However, a local development server is configured for testing.
 
 ### Prerequisites
 *   Node.js and npm (optional, for running the local server).
@@ -36,21 +35,20 @@ Since this is a static site, no compilation step is strictly necessary. However,
     ```
     This command runs `npx http-server . -o -c-1` to serve the site locally and open it in the default browser.
 
+## Deployment & Repository Details
+
+*   **Repository:** `https://github.com/MikeFrank99/SmartHubUtility`
+*   **Custom Domain:** `https://shu.michaelfrancazzi.com`
+*   **GitHub Pages URL:** `https://mikefrank99.github.io/SmartHubUtility/`
+
+### Deployment Conventions
+1.  **CNAME File:** Do not delete the `CNAME` file, as it maintains the link to the custom domain.
+2.  **Relative Paths:** Always use `./` in HTML/CSS for resource linking to ensure they resolve correctly under both the custom domain and the GitHub subdirectory.
+3.  **Pushing Changes:** Use `git push origin main`. GitHub Actions will automatically handle the build and deployment.
+
 ## Development Conventions
 
 ### Coding Style
-*   **Paths:** Always use **relative paths** (e.g., `./css/style.css`, `./images/logo.png`) to ensure compatibility with GitHub Pages' subdirectory hosting.
-*   **CSS:** Uses CSS Variables (`:root`) for colors and easy theming. BEM-like naming is loosely followed.
-*   **JavaScript:** Vanilla JS. Uses `DOMContentLoaded` to ensure the DOM is ready.
-
-### Deployment (GitHub Pages)
-1.  Ensure `.nojekyll` exists in the root.
-2.  Push changes to the `main` branch.
-3.  Configure GitHub Pages in repository settings to serve from the root directory.
-
-### Key Sections
-*   **Hero:** Immersive introduction with a call to action.
-*   **Chi Siamo (About):** Team introduction.
-*   **Servizi (Services):** Card-based grid displaying offered services.
-*   **Lavora con noi (Careers):** Two-column layout with job details and a specific application form.
-*   **Contatti (Contact):** General inquiry form.
+*   **CSS:** Uses CSS Variables (`:root`) for colors and easy theming.
+*   **JavaScript:** Vanilla JS. Uses `IntersectionObserver` for scroll animations.
+*   **Paths:** Always use **relative paths** for maximum compatibility.
