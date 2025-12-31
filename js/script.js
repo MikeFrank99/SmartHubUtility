@@ -1,5 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- Dynamic Logo Text ---
+    const logoText = document.getElementById('logo-text');
+    
+    function updateLogo() {
+        if (window.innerWidth < 480) {
+            logoText.textContent = 'Shu.';
+        } else {
+            logoText.textContent = 'SmartHubUtility';
+        }
+    }
+
+    // Initial check and listener
+    if (logoText) {
+        updateLogo();
+        window.addEventListener('resize', updateLogo);
+    }
+
     // --- Scroll Animations (Intersection Observer) ---
     const revealElements = document.querySelectorAll('.reveal');
 

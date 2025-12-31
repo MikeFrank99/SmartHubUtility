@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
 :root {
     /* Modern Tech Palette */
     --primary-color: #0f172a; /* Deep Navy */
@@ -27,7 +29,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     line-height: 1.7;
     color: var(--text-color);
     background-color: var(--white);
@@ -52,7 +54,7 @@ img {
 
 /* Typography */
 h1, h2, h3, h4 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-weight: 700;
@@ -85,8 +87,7 @@ p {
 
 /* Header & Nav */
 header {
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background-color: var(--white);
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
@@ -170,14 +171,18 @@ section.hero {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.2), transparent 40%),
-                radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.2), transparent 40%);
+    background: 
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.2), transparent 50%),
+        radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.2), transparent 50%),
+        linear-gradient(to bottom, transparent 0%, transparent 60%, var(--primary-color) 95%);
     z-index: 1;
+    /* Use a curved clip-path to approximate the wave shape and prevent bleed */
+    clip-path: ellipse(150% 100% at 50% 0%);
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -205,6 +210,7 @@ section.hero {
     overflow: hidden;
     line-height: 0;
     transform: rotate(180deg);
+    z-index: 2; /* Higher than overlay, lower than content */
 }
 
 .custom-shape-divider-bottom-167890 svg {
@@ -267,6 +273,11 @@ section.hero {
 section {
     scroll-margin-top: 80px;
     padding: 6rem 2rem;
+}
+
+#chi-siamo {
+    background: linear-gradient(to bottom, var(--white), #f8fafc);
+    position: relative;
 }
 
 section:nth-of-type(even) {
@@ -338,6 +349,7 @@ section:nth-of-type(even) {
     font-size: 2rem;
     background: -webkit-linear-gradient(135deg, #3b82f6, #06b6d4);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
     display: inline-block;
@@ -539,12 +551,27 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 2;
+    }
+
     .nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 70px;
+        top: 60px;
         left: 0;
         background: var(--white);
         box-shadow: var(--shadow);
@@ -569,6 +596,22 @@ footer {
     
     .hero h1 {
         font-size: 2.2rem;
+    }
+
+    /* Adjust wave height and scale on mobile for better aspect ratio */
+    .custom-shape-divider-bottom-167890 svg {
+        height: 50px;
+        width: 200%; /* Stretch width to allow for more natural curve when scaled */
+        left: -50%;  /* Center the over-stretched SVG */
+    }
+
+    .hero-overlay {
+        /* Adjust the ellipse to match the shorter, wider wave on mobile */
+        clip-path: ellipse(150% 100% at 50% 0%);
+        background: 
+            radial-gradient(circle at top right, rgba(59, 130, 246, 0.2), transparent 70%),
+            radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.2), transparent 70%),
+            linear-gradient(to bottom, transparent 0%, transparent 50%, var(--primary-color) 90%);
     }
     
     .grid {

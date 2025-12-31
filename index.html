@@ -16,8 +16,8 @@
 <body>
     <header>
         <div class="navbar">
-            <a href="#home" class="logo">
-                <img src="./images/logo.png" alt="SmartHubUtility Logo" style="height: 40px; width: auto;">
+            <a href="#home" class="logo" id="site-logo">
+                <span id="logo-text">SmartHubUtility</span>
             </a>
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fas fa-bars"></i>
@@ -40,10 +40,10 @@
             <div class="hero-overlay"></div>
             <div class="hero-content reveal">
                 <h1>Il futuro delle tue utenze<br>inizia qui.</h1>
-                <p>Consulenza strategica su Luce, Gas, Connettività e Fotovoltaico. Trasformiamo i costi in opportunità per la tua casa e la tua azienda.</p>
+                <p>Consulenza <strong>gratuita e continua</strong> su Luce, Gas, Connettività e Fotovoltaico. Monitoriamo costantemente il mercato per garantirti sempre la migliore tariffa, senza alcun costo per te.</p>
                 <div style="margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="#servizi" class="btn btn-primary">Esplora i Servizi</a>
-                    <a href="#contatti" class="btn btn-outline">Richiedi Audit Gratuito</a>
+                    <a href="#contatti" class="btn btn-outline">Audit Gratuito</a>
                 </div>
             </div>
             <!-- Decorative Wave -->
@@ -109,39 +109,26 @@
         <section id="servizi">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>I Nostri Servizi</h2>
-                    <p>Tecnologia e consulenza per l'efficientamento della tua attività.</p>
+                    <h2>Consulenza Dinamica e Gratuita</h2>
+                    <p>Non una semplice vendita, ma un monitoraggio continuo per garantirti sempre l'offerta migliore sul mercato.</p>
                 </div>
 
                 <div class="grid">
-                    <!-- Luce -->
+                    <!-- Luce e Gas -->
                     <div class="card reveal">
-                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=600&q=80" alt="Energia Elettrica" class="card-image">
+                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=600&q=80" alt="Luce e Gas" class="card-image">
                         <div class="card-content">
                             <div>
-                                <i class="fas fa-lightbulb"></i>
-                                <h3>Energia Elettrica</h3>
-                                <p>Analisi tecnica delle curve di carico e brokeraggio energetico. Ti aiutiamo a scegliere tra tariffe a prezzo fisso o indicizzato (PUN) per abbattere i costi delle componenti energia.</p>
+                                <i class="fas fa-plug"></i>
+                                <h3>Luce e Gas</h3>
+                                <p>Consulenza gratuita a 360°. Monitoriamo costantemente i mercati e aggiorniamo le tue offerte cambiando fornitore quando necessario, per assicurarti sempre il prezzo più basso senza che tu debba preoccuparti di nulla.</p>
                             </div>
-                            <button onclick="selectService('luce')" class="btn btn-secondary">Analisi Bolletta</button>
-                        </div>
-                    </div>
-
-                    <!-- Gas -->
-                    <div class="card reveal" style="transition-delay: 100ms;">
-                        <img src="https://images.unsplash.com/photo-1626102213812-921447037920?auto=format&fit=crop&w=600&q=80" alt="Gas Naturale" class="card-image">
-                        <div class="card-content">
-                            <div>
-                                <i class="fas fa-burn"></i>
-                                <h3>Gas Naturale</h3>
-                                <p>Gestione forniture gas per riscaldamento e processi industriali. Monitoriamo l'indice PSV per garantirti forniture trasparenti e protezione dagli sbalzi di mercato.</p>
-                            </div>
-                            <button onclick="selectService('gas')" class="btn btn-secondary">Analisi Bolletta</button>
+                            <button onclick="selectService('luce-gas')" class="btn btn-secondary">Analisi Gratuita</button>
                         </div>
                     </div>
 
                     <!-- Internet -->
-                    <div class="card reveal" style="transition-delay: 200ms;">
+                    <div class="card reveal" style="transition-delay: 100ms;">
                         <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Internet & Fibra" class="card-image">
                         <div class="card-content">
                             <div>
@@ -154,7 +141,7 @@
                     </div>
 
                     <!-- Telefonia -->
-                    <div class="card reveal">
+                    <div class="card reveal" style="transition-delay: 200ms;">
                         <img src="https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?auto=format&fit=crop&w=600&q=80" alt="Telefonia" class="card-image">
                         <div class="card-content">
                             <div>
@@ -167,7 +154,7 @@
                     </div>
 
                     <!-- Sky -->
-                    <div class="card reveal" style="transition-delay: 100ms;">
+                    <div class="card reveal">
                         <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=600&q=80" alt="Sky TV" class="card-image">
                         <div class="card-content">
                             <div>
@@ -180,7 +167,7 @@
                     </div>
 
                     <!-- Fotovoltaico -->
-                    <div class="card reveal" style="transition-delay: 200ms;">
+                    <div class="card reveal" style="transition-delay: 100ms;">
                         <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80" alt="Fotovoltaico" class="card-image">
                         <div class="card-content">
                             <div>
@@ -227,8 +214,7 @@
                             <label for="service">Servizio di interesse</label>
                             <select id="service" name="service">
                                 <option value="">Seleziona un servizio...</option>
-                                <option value="luce">Luce</option>
-                                <option value="gas">Gas</option>
+                                <option value="luce-gas">Luce e Gas</option>
                                 <option value="internet">Internet</option>
                                 <option value="telefonia">Telefonia Mobile</option>
                                 <option value="sky">Sky TV</option>
