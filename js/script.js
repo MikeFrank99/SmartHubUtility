@@ -280,6 +280,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chatInput');
     const sendMessage = document.getElementById('sendMessage');
     const chatMessages = document.getElementById('chatMessages');
+    const floatingCta = document.getElementById('floatingCta');
+
+    // Manual smooth scroll for floating CTA
+    if (floatingCta) {
+        floatingCta.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector('#contatti');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
 
     const WEBHOOK_URL = 'https://n8n.michaelfrancazzi.com/webhook/a3aa6054-2127-4ea6-b54c-ca6f84464c24/chat';
     let sessionId = localStorage.getItem('chatSessionId') || Math.random().toString(36).substring(7);
