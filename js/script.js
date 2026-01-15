@@ -42,14 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Floating CTA Visibility ---
-    const floatingCta = document.getElementById('floatingCta');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-            floatingCta.classList.add('visible');
-        } else {
-            floatingCta.classList.remove('visible');
-        }
-    });
+    // Removed scroll logic as CTA is now always visible
 
     // --- Scroll Animations (Intersection Observer) ---
     const revealElements = document.querySelectorAll('.reveal');
@@ -200,7 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
 
     // --- Career Form Validation ---
     const careerForm = document.getElementById('careerForm');
@@ -281,7 +273,107 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Helper function for "Richiedi Info" buttons ---// Declared outside DOMContentLoaded to be accessible globally
+    // --- n8n Chat (Fully Custom Implementation) ---
+    const chatToggleBtn = document.getElementById('chatToggleBtn');
+    const closeChat = document.getElementById('closeChat');
+    const chatPanel = document.getElementById('chatPanel');
+    const chatInput = document.getElementById('chatInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const chatMessages = document.getElementById('chatMessages');
+
+    const WEBHOOK_URL = 'https://n8n.michaelfrancazzi.com/webhook/a3aa6054-2127-4ea6-b54c-ca6f84464c24/chat';
+    let sessionId = localStorage.getItem('chatSessionId') || Math.random().toString(36).substring(7);
+    localStorage.setItem('chatSessionId', sessionId);
+
+    function addMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('message', sender);
+        
+        if (sender === 'bot') {
+            // Parse Markdown for bot messages
+            msgDiv.innerHTML = marked.parse(text);
+        } else {
+            msgDiv.textContent = text;
+        }
+        
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    async function handleChat() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        addMessage(message, 'user');
+        chatInput.value = '';
+
+        // Show typing indicator (optional placeholder)
+        const typingDiv = document.createElement('div');
+        typingDiv.classList.add('message', 'bot', 'typing-indicator');
+        typingDiv.textContent = '...';
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+            const response = await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    chatInput: message,
+                    sessionId: sessionId,
+                    action: 'sendMessage'
+                })
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+            const data = await response.json();
+            chatMessages.removeChild(typingDiv);
+
+            // Se n8n restituisce un array o un oggetto con 'output' o 'text'
+            const botResponse = data.output || data.text || (Array.isArray(data) ? data[0].output : "Risposta ricevuta in formato non valido.");
+            addMessage(botResponse, 'bot');
+
+        } catch (error) {
+            if (typingDiv.parentNode) chatMessages.removeChild(typingDiv);
+            addMessage("Errore di connessione. Verifica che il webhook n8n sia attivo e accetti richieste CORS.", 'bot');
+            console.error('Detailed Chat Error:', error);
+        }
+    }
+
+    if (chatToggleBtn && chatPanel) {
+        chatToggleBtn.addEventListener('click', () => {
+            chatPanel.classList.toggle('active');
+            const icon = chatToggleBtn.querySelector('i');
+            if (chatPanel.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+                chatInput.focus();
+            } else {
+                icon.className = 'fas fa-comments';
+            }
+        });
+    }
+
+    if (closeChat) {
+        closeChat.addEventListener('click', () => {
+            chatPanel.classList.remove('active');
+            chatToggleBtn.querySelector('i').className = 'fas fa-comments';
+        });
+    }
+
+    if (sendMessage) sendMessage.addEventListener('click', handleChat);
+    if (chatInput) {
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleChat();
+        });
+    }
+});
+
+// --- Helper function for "Richiedi Info" buttons ---
+// Declared outside DOMContentLoaded to be accessible globally
 function selectService(serviceValue) {
     const serviceSelect = document.getElementById('service');
     const contactSection = document.getElementById('contatti');
